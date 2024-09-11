@@ -2,7 +2,7 @@
 # P1-a. import "wine.data" into a data.frame in R 
 
 winedata <- read.table("wine.data", sep = ",")
-winedata
+colnames(winedata)
 colnames(winedata) <- c("class", "alcohol", "acid", "ash", "alcalinity", "magnesium", "phenols", "flavanoids", "nonflavanoid_phenols", "proanthocyanins", "color_intensity", "hue", "protein", "proline")            
 
 # P1-b. check the number of wines within each class
@@ -26,8 +26,8 @@ color <- winedata$color_intensity
 cor(alcohol, color)
 
 # P1-c-2. the highest and the lowest correlation 
-# the highest : class 1 
-# the lowest : class 2
+# the highest : class 1 (0.4082913) 
+# the lowest : class 2 (0.2697891)
 
 class <- winedata$class
 
@@ -92,7 +92,7 @@ average_table
 # We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. 
 
 # t-test p-value between class1 and class2 : 1.889e-11
-# t-test p-value between class1 and class3 : 2.2e-16
+# t-test p-value between class1 and class3 : < 2.2e-16
 # t-test p-value between class2 and class3 : 1.622e-10
 
 phenols1 <- winedata$phenols[winedata$class == 1]
@@ -109,10 +109,8 @@ t_test23
 
 
 # Problem2 - AskAManager.org Data
-
 # P2-a. import AskAManager.csv into a data.frame
 
-rm(list = ls())
 salary <- read.csv("AskAManager.csv")
 
 # P2-b. simplify the variable names
@@ -121,12 +119,14 @@ colnames(salary)
 colnames(salary) <- c("number", "time", "age", "industry", "title", "title_context", "salary", "bonus", "currency", "currency_other", "income_context", "country", "state", "city", "experience", "experience_field", "education", "gender", "race")
 
 # P2-c. restrict the data to those paid in USD 
-# the number of observations before and afterv the restriction are same with "23374" 
+# the number of observations before and after the restriction are same with "23374" 
+
 length(salary$currency)
 length(salary$currency[salary$currency == "USD"])
-
 salary_res <- salary[salary$currency == "USD", ]
+
 nrow(salary_res) == length(salary$currency[salary$currency == "USD"])
+
 
 # P2-d. Eliminate any rows for which their age, years of experience in their field, and years of experience total are impossible
 # the number of observation after the elimination : 23116
@@ -146,33 +146,45 @@ experience_kind <- c("5-7 years" = 5, "2 - 4 years" = 2, "8 - 10 years" = 8, "21
 age_trans <- age_kind[age]
 field_trans <- experience_kind[field]
 total_trans <- experience_kind[total]
+n_usd <- nrow(salary_res)
 memo <- logical(n_usd)
 
 for(i in 1:n_usd) { 
+  # if age < 18, eliminate the data
+  # if age - 18 < field experience, eliminate the data
+  # if age - 18 < total experience, eliminate the data
+  # if total experience < field experience, eliminate the data
+  
   if(age_trans[i] == 0) {
-    # if age < 18, restrict
-    memo[i] = FALSE
+       memo[i] = FALSE
   }
   else if(field_trans[i]>age_trans[i]) {
-    # if age - 18 < field experience, restirict
-    memo[i] = FALSE
+       memo[i] = FALSE
   }
   else if(total_trans[i]>age_trans[i]) {
-    # if age - 18 < total experience, restrict 
-    memo[i] = FALSE
+       memo[i] = FALSE
   } 
   else if(field_trans[i]>total_trans[i]) {
-    # if total experience < field experience, restrict  
-    memo[i] = FALSE
+       memo[i] = FALSE
   }
   else {
-    memo[i] = TRUE
+       memo[i] = TRUE
   }
 }
 
 salary_year <- salary_res[memo, ]
-salary_year$age[!duplicated(salary_year$age)]
-salary_year$experience_field[salary_year$experience == "1 year or less"]
+
+salary_year$age[!duplicated(salary_year$age)] #test whether age is under 18 
+
+experience_test <- salary_year$age[salary_year$experience == "41 years or more"]
+experience_test[!duplicated(experience_test)] #test whether their is reasonable with total experience as changing experience values
+
+fieldexp_test <- salary_year$age[salary_year$experience_field == "41 years or more"]
+fieldexp_test[!duplicated(fieldexp_test)] #test whether their is reasonable with field experience as changing experience_field values
+
+exp_fieldexp_test <- salary_year$experience_field[salary_year$experience == "8 - 10 years"]
+exp_fieldexp_test[!duplicated(exp_fieldexp_test)] #test whether filed experience is less than total experience as changing experience values
+
 nrow(salary_year)
 
 # P2-e. eliminate any rows with extremely low or high salaries. 
@@ -194,9 +206,9 @@ sd_monetary <- sd(monetary_reward)
 mean_monetary + 2*sd_monetary
 mean_monetary - sd_monetary
 
-hist(monetary_reward[monetary_reward <= 1459608 & monetary_reward >= 1000], breaks = 100)
-hist(monetary_reward[monetary_reward > 1459608], breaks = 100)
-hist(monetary_reward[monetary_reward < 1000 & monetary_reward > 0], breaks = 100)
+hist(monetary_reward[monetary_reward <= 1459608 & monetary_reward >= 1000], breaks = 100) # histogram with monetary reward between 1,000 USD and 1,459,608 USD
+hist(monetary_reward[monetary_reward > 1459608], breaks = 100) # histogram with monetary reward over 1,459,608 USD
+hist(monetary_reward[monetary_reward < 1000 & monetary_reward > 0], breaks = 100) # histogram with monetary reward less than 1,000 USD
 
 salary_year$monetary_reward <- monetary_reward
 salary_monetary <- salary_year[monetary_reward <= 1459608 & monetary_reward >= 1000, ]
@@ -210,8 +222,8 @@ experience <- salary_monetary$experience
 experience_field <- salary_monetary$experience_field
 education[!duplicated(education)]
 
-# Problem 3 - Palindromic Numbers
 
+# Problem 3 - Palindromic Numbers
 # P3-a. function "isPalindromic" that check if a given positive integer is a palindromic 
 
 #' Palindromic of Integers 
@@ -234,7 +246,8 @@ education[!duplicated(education)]
 #' $reversed
 #' [1] "343"
 isPalindromic <- function(x, na.rm = FALSE) {
-  if(!is.numeric(x)) {
+  if(!is.numeric(x)) { 
+    # this code is from STATS 506 class note
     warning("x must be a positive integer, attemting to convert")
     suppressWarnings(x <- as.numeric(x))
     if(all(is.na(x))) {
@@ -242,9 +255,11 @@ isPalindromic <- function(x, na.rm = FALSE) {
     }
   }
   if(length(x) == 0) {
+    # this code is from STATS 506 class note
     stop("x must have strictly positive length")
   }
   if(!is.logical(na.rm)) {
+    # this code is from STATS 506 class note
     warning("na.rm must be logical")
   }
   if(x <= 0 ) {
@@ -276,20 +291,8 @@ isPalindromic <- function(x, na.rm = FALSE) {
   }
 }
 
-isPalindromic(1100)
-install.packages("roxygen2")
-library(roxygen2)
-roxygenize()
-install.packages("devtools")
-library(devtools)
-document("/Users/mymy/Desktop/R-studio/wine")
-load_all()
-?isPalindromic
+isPalindromic(1100) # check the "isPalindromic()" function 
 
-getwd()
-dir.create("~/path/to/package", recursive = TRUE)
-dir.exists("~/path/to/package")
-setwd("/absolute/path/to/package")
 
 # P3-b. create a nextPalindrome function that finds the next palindromic number strictly greater than the input
 
@@ -311,6 +314,7 @@ setwd("/absolute/path/to/package")
 #' [1] "1551"
 nextPalindrome <- function(x, na.rm = FALSE) {
   if(!is.numeric(x)) {
+    # this code is from STATS 506 class note
     warning("x must be a positive integer, attemting to convert")
     suppressWarnings(x <- as.numeric(x))
     if(all(is.na(x))) {
@@ -318,9 +322,11 @@ nextPalindrome <- function(x, na.rm = FALSE) {
     }
   }
   if(length(x) == 0) {
+    # this code is from STATS 506 class note
     stop("x must have strictly positive length")
   }
   if(!is.logical(na.rm)) {
+    # this code is from STATS 506 class note
     warning("na.rm must be logical")
   }
   if(x <= 0 ) {
@@ -352,8 +358,9 @@ nextPalindrome <- function(x, na.rm = FALSE) {
   return(nextPalindrome = next_palindrome)
   
 }
-nextPalindrome(1523)
-document()
+
+nextPalindrome(1523) # check the "nextPalindrome()" function
+
 
 # P3-c. Use above functions to find the next palindrome for each of the following: (391, 9928, 19272719, 109, 2)
 # i. 391 : 393
