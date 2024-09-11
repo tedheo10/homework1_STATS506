@@ -99,13 +99,9 @@ phenols1 <- winedata$phenols[winedata$class == 1]
 phenols2 <- winedata$phenols[winedata$class == 2]
 phenols3 <- winedata$phenols[winedata$class == 3]
 
-t_test12 <- t.test(phenols1, phenols2)
-t_test13 <- t.test(phenols1, phenols3)
-t_test23 <- t.test(phenols2, phenols3)
-
-t_test12
-t_test13
-t_test23
+t.test(phenols1, phenols2)
+t.test(phenols1, phenols3)
+t.test(phenols2, phenols3)
 
 
 # Problem2 - AskAManager.org Data
@@ -206,9 +202,10 @@ sd_monetary <- sd(monetary_reward)
 mean_monetary + 2*sd_monetary
 mean_monetary - sd_monetary
 
-hist(monetary_reward[monetary_reward <= 1459608 & monetary_reward >= 1000], breaks = 100) # histogram with monetary reward between 1,000 USD and 1,459,608 USD
-hist(monetary_reward[monetary_reward > 1459608], breaks = 100) # histogram with monetary reward over 1,459,608 USD
-hist(monetary_reward[monetary_reward < 1000 & monetary_reward > 0], breaks = 100) # histogram with monetary reward less than 1,000 USD
+hist(monetary_reward[monetary_reward <= 1459608 & monetary_reward >= 1000], breaks = 100, main = "Monetary reward between 1,000 and 1,459,608 USD", xlab = "monetary reward", ylab = "number of people") 
+hist(monetary_reward[monetary_reward > 1459608], breaks = 100, main = "Monetary reward over 1,459,608 USD", xlab = "monetary reward", ylab = "number of people") 
+hist(monetary_reward[monetary_reward < 1000 & monetary_reward > 0], breaks = 100, main = "Monetary reward less than 1,000 USD", xlab = "monetary reward", ylab = "number of people")
+
 
 salary_year$monetary_reward <- monetary_reward
 salary_monetary <- salary_year[monetary_reward <= 1459608 & monetary_reward >= 1000, ]
