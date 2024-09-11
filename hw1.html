@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taeyoung Heo(UMID # 2914 5801)">
 
-<title>Homework #1</title>
+<title>Problem Set 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework #1</h1>
+<h1 class="title">Problem Set 1</h1>
 </div>
 
 
@@ -103,24 +103,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="problem1---wine-data" class="level2">
-<h2 class="anchored" data-anchor-id="problem1---wine-data">Problem1 - Wine data</h2>
+<p>GitHub repository link : <a href="https://github.com/tedheo10/homework1_STATS506">https://github.com/tedheo10/homework1_STATS506</a> <br> <br> ## Problem1 - Wine data</p>
 <p><b>P1-a.</b> import “wine.data” into a data.frame in R</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>winedata <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"wine.data"</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(winedata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"class"</span>, <span class="st">"alcohol"</span>, <span class="st">"acid"</span>, <span class="st">"ash"</span>, <span class="st">"alcalinity"</span>, <span class="st">"magnesium"</span>, <span class="st">"phenols"</span>, <span class="st">"flavanoids"</span>, <span class="st">"nonflavanoid_phenols"</span>, <span class="st">"proanthocyanins"</span>, <span class="st">"color_intensity"</span>, <span class="st">"hue"</span>, <span class="st">"protein"</span>, <span class="st">"proline"</span>)        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(winedata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"class"</span>, <span class="st">"alcohol"</span>, <span class="st">"acid"</span>, <span class="st">"ash"</span>, <span class="st">"alcalinity"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">"magnesium"</span>, <span class="st">"phenols"</span>, <span class="st">"flavanoids"</span>, <span class="st">"nonflavanoid_phenols"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">"proanthocyanins"</span>, <span class="st">"color_intensity"</span>, <span class="st">"hue"</span>, <span class="st">"protein"</span>, <span class="st">"proline"</span>)        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br> <b>P1-b.</b> check the number of wines within each class <br> [class1 = 59, class2 = 71, class3 = 48]</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wineclass <span class="ot">&lt;-</span> winedata<span class="sc">$</span>class</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">which</span>(wineclass<span class="sc">==</span><span class="dv">1</span>)), <span class="fu">length</span>(<span class="fu">which</span>(wineclass <span class="sc">==</span> <span class="dv">2</span>)), <span class="fu">length</span>(<span class="fu">which</span>(wineclass <span class="sc">==</span> <span class="dv">3</span>)))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>report <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">71</span>, <span class="dv">48</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(count[<span class="dv">1</span>] <span class="sc">==</span> report[<span class="dv">1</span>] <span class="sc">&amp;</span> count[<span class="dv">2</span>] <span class="sc">==</span> report[<span class="dv">2</span>] <span class="sc">&amp;</span> count[<span class="dv">3</span>] <span class="sc">==</span> report[<span class="dv">3</span>]) { </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"correct as reported in wine.names"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"wrong as reported in wine.names"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">which</span>(wineclass<span class="sc">==</span><span class="dv">1</span>)), <span class="fu">length</span>(<span class="fu">which</span>(wineclass <span class="sc">==</span> <span class="dv">2</span>)), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">length</span>(<span class="fu">which</span>(wineclass <span class="sc">==</span> <span class="dv">3</span>)))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>report <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">71</span>, <span class="dv">48</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(count[<span class="dv">1</span>] <span class="sc">==</span> report[<span class="dv">1</span>] <span class="sc">&amp;</span> count[<span class="dv">2</span>] <span class="sc">==</span> report[<span class="dv">2</span>] <span class="sc">&amp;</span> count[<span class="dv">3</span>] <span class="sc">==</span> report[<span class="dv">3</span>]) </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  { </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"correct as reported in wine.names"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"wrong as reported in wine.names"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "correct as reported in wine.names"</code></pre>
 </div>
@@ -146,8 +149,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>color2 <span class="ot">&lt;-</span> winedata<span class="sc">$</span>color[winedata<span class="sc">$</span>class <span class="sc">==</span> <span class="dv">2</span>]</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>color3 <span class="ot">&lt;-</span> winedata<span class="sc">$</span>color[winedata<span class="sc">$</span>class <span class="sc">==</span> <span class="dv">3</span>]</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>gcor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">cor</span>(alcohol1, color1), <span class="fu">cor</span>(alcohol2, color2), <span class="fu">cor</span>(alcohol3, color3))</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>gcor </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>gcor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">cor</span>(alcohol1, color1), <span class="fu">cor</span>(alcohol2, color2), </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">cor</span>(alcohol3, color3))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>gcor </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4082913 0.2697891 0.3503777</code></pre>
 </div>
@@ -218,7 +222,7 @@ class2   519.5070
 class3   629.8958</code></pre>
 </div>
 </div>
-<p><br> <b>P1-e.</b> t-test to examine whether the level of phenols differs across the three classes <br> <br> We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. <br> <br> t-test p-value between class1 and class2 : <b>1.889e-11</b> <br> t-test p-value between class1 and class3 : <b>2.2e-16</b> <br> t-test p-value between class2 and class3 : <b>1.622e-10</b></p>
+<p><br> <b>P1-e.</b> t-test to examine whether the level of phenols differs across the three classes <br> <br> We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. <br> <br> t-test p-value between class1 and class2 : <b>1.889e-11</b> <br> t-test p-value between class1 and class3 : <b>&lt; 2.2e-16</b> <br> t-test p-value between class2 and class3 : <b>1.622e-10</b></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>phenols1 <span class="ot">&lt;-</span> winedata<span class="sc">$</span>phenols[winedata<span class="sc">$</span>class <span class="sc">==</span> <span class="dv">1</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>phenols2 <span class="ot">&lt;-</span> winedata<span class="sc">$</span>phenols[winedata<span class="sc">$</span>class <span class="sc">==</span> <span class="dv">2</span>]</span>
@@ -267,7 +271,6 @@ mean of x mean of y
  2.258873  1.678750 </code></pre>
 </div>
 </div>
-</section>
 <section id="problem2---askamanager.org-data" class="level2">
 <h2 class="anchored" data-anchor-id="problem2---askamanager.org-data">Problem2 - AskAManager.org Data</h2>
 <p><b>P2-a.</b> import AskAManager.csv into a data.frame</p>
@@ -276,7 +279,11 @@ mean of x mean of y
 </div>
 <p><br> <b>P2-b.</b> simplify the variable names</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(salary) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"number"</span>, <span class="st">"time"</span>, <span class="st">"age"</span>, <span class="st">"industry"</span>, <span class="st">"title"</span>, <span class="st">"title_context"</span>, <span class="st">"salary"</span>, <span class="st">"bonus"</span>, <span class="st">"currency"</span>, <span class="st">"currency_other"</span>, <span class="st">"income_context"</span>, <span class="st">"country"</span>, <span class="st">"state"</span>, <span class="st">"city"</span>, <span class="st">"experience"</span>, <span class="st">"experience_field"</span>, <span class="st">"education"</span>, <span class="st">"gender"</span>, <span class="st">"race"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(salary) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"number"</span>, <span class="st">"time"</span>, <span class="st">"age"</span>, <span class="st">"industry"</span>, <span class="st">"title"</span>, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"title_context"</span>, <span class="st">"salary"</span>, <span class="st">"bonus"</span>, <span class="st">"currency"</span>, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"currency_other"</span>, <span class="st">"income_context"</span>, <span class="st">"country"</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"state"</span>, <span class="st">"city"</span>, <span class="st">"experience"</span>, <span class="st">"experience_field"</span>, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"education"</span>, <span class="st">"gender"</span>, <span class="st">"race"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br> <b>P2-c.</b> restrict the data to those paid in USD <br> the number of observations before : <b>28,062</b> <br> the number of oberservations after the restriction : <b>23,374</b></p>
 <div class="cell">
@@ -316,61 +323,68 @@ mean of x mean of y
 <pre><code>[1] "5-7 years"        "2 - 4 years"      "8 - 10 years"     "21 - 30 years"   
 [5] "11 - 20 years"    "41 years or more" "31 - 40 years"    "1 year or less"  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>age_kind <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"25-34"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"45-54"</span> <span class="ot">=</span> <span class="dv">36</span>, <span class="st">"35-44"</span> <span class="ot">=</span> <span class="dv">26</span>, <span class="st">"18-24"</span> <span class="ot">=</span> <span class="dv">6</span>, <span class="st">"65 or over"</span> <span class="ot">=</span> <span class="dv">56</span>, <span class="st">"55-64"</span> <span class="ot">=</span> <span class="dv">46</span>, <span class="st">"under 18"</span> <span class="ot">=</span> <span class="dv">0</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>experience_kind <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"5-7 years"</span> <span class="ot">=</span> <span class="dv">5</span>, <span class="st">"2 - 4 years"</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">"8 - 10 years"</span> <span class="ot">=</span> <span class="dv">8</span>, <span class="st">"21 - 30 years"</span> <span class="ot">=</span> <span class="dv">21</span>, <span class="st">"11 - 20 years"</span> <span class="ot">=</span> <span class="dv">11</span>, <span class="st">"41 years or more"</span> <span class="ot">=</span> <span class="dv">41</span>, <span class="st">"31 - 40 years"</span> <span class="ot">=</span> <span class="dv">31</span>, <span class="st">"1 year or less"</span> <span class="ot">=</span> <span class="dv">1</span> )</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>age_trans <span class="ot">&lt;-</span> age_kind[age]</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>field_trans <span class="ot">&lt;-</span> experience_kind[field]</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>total_trans <span class="ot">&lt;-</span> experience_kind[total]</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>n_usd <span class="ot">&lt;-</span> <span class="fu">nrow</span>(salary_res)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>memo <span class="ot">&lt;-</span> <span class="fu">logical</span>(n_usd)</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_usd) { </span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if age &lt; 18, eliminate the data</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if age - 18 &lt; field experience, eliminate the data</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if age - 18 &lt; total experience, eliminate the data</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if total experience &lt; field experience, eliminate the data</span></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(age_trans[i] <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span>(field_trans[i]<span class="sc">&gt;</span>age_trans[i]) {</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span>(total_trans[i]<span class="sc">&gt;</span>age_trans[i]) {</span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span>(field_trans[i]<span class="sc">&gt;</span>total_trans[i]) {</span>
-<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
-<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> {</span>
-<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>salary_year <span class="ot">&lt;-</span> salary_res[memo, ]</span>
-<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>salary_year<span class="sc">$</span>age[<span class="sc">!</span><span class="fu">duplicated</span>(salary_year<span class="sc">$</span>age)] <span class="co">#test whether age is under 18 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>age_kind <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"25-34"</span> <span class="ot">=</span> <span class="dv">16</span>, <span class="st">"45-54"</span> <span class="ot">=</span> <span class="dv">36</span>, <span class="st">"35-44"</span> <span class="ot">=</span> <span class="dv">26</span>, <span class="st">"18-24"</span> <span class="ot">=</span> <span class="dv">6</span>, </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"65 or over"</span> <span class="ot">=</span> <span class="dv">56</span>, <span class="st">"55-64"</span> <span class="ot">=</span> <span class="dv">46</span>, <span class="st">"under 18"</span> <span class="ot">=</span> <span class="dv">0</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>experience_kind <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"5-7 years"</span> <span class="ot">=</span> <span class="dv">5</span>, <span class="st">"2 - 4 years"</span> <span class="ot">=</span> <span class="dv">2</span>, </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"8 - 10 years"</span> <span class="ot">=</span> <span class="dv">8</span>, <span class="st">"21 - 30 years"</span> <span class="ot">=</span> <span class="dv">21</span>, </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"11 - 20 years"</span> <span class="ot">=</span> <span class="dv">11</span>, <span class="st">"41 years or more"</span> <span class="ot">=</span> <span class="dv">41</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"31 - 40 years"</span> <span class="ot">=</span> <span class="dv">31</span>, <span class="st">"1 year or less"</span> <span class="ot">=</span> <span class="dv">1</span> )</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>age_trans <span class="ot">&lt;-</span> age_kind[age]</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>field_trans <span class="ot">&lt;-</span> experience_kind[field]</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>total_trans <span class="ot">&lt;-</span> experience_kind[total]</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>n_usd <span class="ot">&lt;-</span> <span class="fu">nrow</span>(salary_res)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>memo <span class="ot">&lt;-</span> <span class="fu">logical</span>(n_usd)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_usd) { </span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if age &lt; 18, eliminate the data</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if age - 18 &lt; field experience, eliminate the data</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if age - 18 &lt; total experience, eliminate the data</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if total experience &lt; field experience, eliminate the data</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(age_trans[i] <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span>(field_trans[i]<span class="sc">&gt;</span>age_trans[i]) {</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span>(total_trans[i]<span class="sc">&gt;</span>age_trans[i]) {</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>  } </span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span>(field_trans[i]<span class="sc">&gt;</span>total_trans[i]) {</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> {</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>       memo[i] <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a><span class="co">#test whether age is under 18 </span></span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>salary_year <span class="ot">&lt;-</span> salary_res[memo, ]</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>salary_year<span class="sc">$</span>age[<span class="sc">!</span><span class="fu">duplicated</span>(salary_year<span class="sc">$</span>age)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "25-34"      "45-54"      "35-44"      "18-24"      "65 or over"
 [6] "55-64"     </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test example for whether their is reasonable with total experience </span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>experience_test <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>age[salary_year<span class="sc">$</span>experience <span class="sc">==</span> <span class="st">"41 years or more"</span>]</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>experience_test[<span class="sc">!</span><span class="fu">duplicated</span>(experience_test)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>experience_test <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>age[salary_year<span class="sc">$</span>experience</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="sc">==</span> <span class="st">"41 years or more"</span>]</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>experience_test[<span class="sc">!</span><span class="fu">duplicated</span>(experience_test)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "65 or over" "55-64"     </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test example for whether their is reasonable with field experience </span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>fieldexp_test <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>age[salary_year<span class="sc">$</span>experience_field <span class="sc">==</span> <span class="st">"41 years or more"</span>]</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>fieldexp_test[<span class="sc">!</span><span class="fu">duplicated</span>(fieldexp_test)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>fieldexp_test <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>age[salary_year<span class="sc">$</span>experience_field </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="sc">==</span> <span class="st">"41 years or more"</span>]</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>fieldexp_test[<span class="sc">!</span><span class="fu">duplicated</span>(fieldexp_test)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "65 or over" "55-64"     </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test example for whether filed experience is less than total experience</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>exp_fieldexp_test <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>experience_field[salary_year<span class="sc">$</span>experience <span class="sc">==</span> <span class="st">"8 - 10 years"</span>]</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>exp_fieldexp_test[<span class="sc">!</span><span class="fu">duplicated</span>(exp_fieldexp_test)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>exp_fieldexp_test <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>experience_field[salary_year<span class="sc">$</span>experience</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="sc">==</span> <span class="st">"8 - 10 years"</span>]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>exp_fieldexp_test[<span class="sc">!</span><span class="fu">duplicated</span>(exp_fieldexp_test)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "5-7 years"      "2 - 4 years"    "8 - 10 years"   "1 year or less"</code></pre>
 </div>
@@ -379,7 +393,7 @@ mean of x mean of y
 <pre><code>[1] 23116</code></pre>
 </div>
 </div>
-<p><br> <b>P2-e.</b> eliminate any rows with extremely low or high salaries. <br> <br> The other monetary compensation is added to salalry in order to eliminate false slalrries.<br> <br> The extreme high salary : <b>1459608 USD</b> (mean + 2*standard deviation) <br> -&gt; There are values on the right side of the distribution that differ from the mean by more than twice the standard deviation. <br> <br> The extreme low salary : <b>1,000 USD</b> <br> -&gt; There’s a very heavy tail on the left side of the distribution.<br> <br> The sample size : <b>23044</b></p>
+<p><br> <b>P2-e.</b> eliminate any rows with extremely low or high salaries. <br> <br> The other monetary compensation is added to salalry in order to eliminate false slalrries.<br> <br> The extreme high salary : <b>1459608 USD</b> (mean + 2*standard deviation) <br> -&gt; There are values on the right side of the distribution that differ from the mean by more than twice the standard deviation. <br> <br> The extreme low salary : <b>1,000 USD</b> <br> -&gt; There’s a very thick tail on the left side of the distribution.<br> <br> The sample size : <b>23044</b></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>salary</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>bonus <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>bonus</span>
@@ -402,7 +416,10 @@ mean of x mean of y
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -570443.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(monetary_reward[monetary_reward <span class="sc">&lt;=</span> <span class="dv">1459608</span> <span class="sc">&amp;</span> monetary_reward <span class="sc">&gt;=</span> <span class="dv">1000</span>], <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">main =</span> <span class="st">"Monetary reward between 1,000 and 1,459,608 USD"</span>, <span class="at">xlab =</span> <span class="st">"monetary reward"</span>, <span class="at">ylab =</span> <span class="st">"number of people"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(monetary_reward[monetary_reward <span class="sc">&lt;=</span> <span class="dv">1459608</span> <span class="sc">&amp;</span> monetary_reward </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>                     <span class="sc">&gt;=</span> <span class="dv">1000</span>], <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">main =</span> </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">"Monetary reward between 1,000 and 1,459,608 USD"</span>, </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"monetary reward"</span>, <span class="at">ylab =</span> <span class="st">"number of people"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -410,7 +427,9 @@ mean of x mean of y
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(monetary_reward[monetary_reward <span class="sc">&gt;</span> <span class="dv">1459608</span>], <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">main =</span> <span class="st">"Monetary reward over 1,459,608 USD"</span>, <span class="at">xlab =</span> <span class="st">"monetary reward"</span>, <span class="at">ylab =</span> <span class="st">"number of people"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(monetary_reward[monetary_reward <span class="sc">&gt;</span> <span class="dv">1459608</span>], <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">main =</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">"Monetary reward over 1,459,608 USD"</span>, </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"monetary reward"</span>, <span class="at">ylab =</span> <span class="st">"number of people"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -418,7 +437,9 @@ mean of x mean of y
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(monetary_reward[monetary_reward <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> monetary_reward <span class="sc">&gt;</span> <span class="dv">0</span>], <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">main =</span> <span class="st">"Monetary reward less than 1,000 USD"</span>, <span class="at">xlab =</span> <span class="st">"monetary reward"</span>, <span class="at">ylab =</span> <span class="st">"number of people"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(monetary_reward[monetary_reward <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> monetary_reward <span class="sc">&gt;</span> <span class="dv">0</span>], </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">main =</span> <span class="st">"Monetary reward less than 1,000 USD"</span>, </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"monetary reward"</span>, <span class="at">ylab =</span> <span class="st">"number of people"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -442,68 +463,63 @@ mean of x mean of y
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' Determine whether a positive intger is palindromic or not </span></span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function takes a positive integer x and returns a logical value whether the integer is a palindromic number or not and return reversed number to show that whether the reversed is same with the original number.</span></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x a positive integer </span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param na.rm logical, should NA's be removed? Default is FALSE</span></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return list of a logical value and a numeric value</span></span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' x &lt;- 343</span></span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' isPalindromic(x)</span></span>
-<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="co">#' $isPalindromic</span></span>
-<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="co">#' [1] TRUE</span></span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="co">#' $reversed</span></span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="co">#' [1] "343"</span></span>
-<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>isPalindromic <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) { </span>
-<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
-<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"x must be a positive integer, attemting to convert"</span>)</span>
-<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">suppressWarnings</span>(x <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x))</span>
-<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x))) {</span>
-<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
-<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
-<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must have strictly positive length"</span>)</span>
-<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.logical</span>(na.rm)) {</span>
-<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
-<span id="cb57-35"><a href="#cb57-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"na.rm must be logical"</span>)</span>
-<span id="cb57-36"><a href="#cb57-36" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;=</span> <span class="dv">0</span> ) {</span>
-<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
-<span id="cb57-39"><a href="#cb57-39" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">!=</span> <span class="fu">round</span>(x)) {</span>
-<span id="cb57-41"><a href="#cb57-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
-<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-43"><a href="#cb57-43" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb57-44"><a href="#cb57-44" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">as.character</span>(x)</span>
-<span id="cb57-45"><a href="#cb57-45" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(y, <span class="st">""</span>)))</span>
-<span id="cb57-46"><a href="#cb57-46" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(z)</span>
-<span id="cb57-47"><a href="#cb57-47" aria-hidden="true" tabindex="-1"></a>  check_palindromic <span class="ot">&lt;-</span> <span class="fu">logical</span>(k)</span>
-<span id="cb57-48"><a href="#cb57-48" aria-hidden="true" tabindex="-1"></a>  reverse <span class="ot">&lt;-</span> <span class="fu">numeric</span>(k)</span>
-<span id="cb57-49"><a href="#cb57-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
-<span id="cb57-50"><a href="#cb57-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(z[i] <span class="sc">==</span> z[k<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>i]) {</span>
-<span id="cb57-51"><a href="#cb57-51" aria-hidden="true" tabindex="-1"></a>      check_palindromic[i] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb57-52"><a href="#cb57-52" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> { </span>
-<span id="cb57-53"><a href="#cb57-53" aria-hidden="true" tabindex="-1"></a>      check_palindromic[i] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb57-54"><a href="#cb57-54" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb57-55"><a href="#cb57-55" aria-hidden="true" tabindex="-1"></a>    reverse[i] <span class="ot">&lt;-</span> z[k<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>i]</span>
-<span id="cb57-56"><a href="#cb57-56" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a>  reverse_return <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">paste</span>(reverse, <span class="at">collapse =</span> <span class="st">""</span>))</span>
-<span id="cb57-58"><a href="#cb57-58" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">all</span>(check_palindromic <span class="sc">==</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic =</span> <span class="cn">TRUE</span>, <span class="at">reversed =</span> reverse_return))</span>
-<span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> { </span>
-<span id="cb57-62"><a href="#cb57-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic =</span> <span class="cn">FALSE</span>, <span class="at">reversed =</span> reverse_return))</span>
-<span id="cb57-63"><a href="#cb57-63" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-64"><a href="#cb57-64" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb57-65"><a href="#cb57-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-66"><a href="#cb57-66" aria-hidden="true" tabindex="-1"></a><span class="fu">isPalindromic</span>(<span class="dv">1100</span>) <span class="co"># check the "isPalindromic()" function </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function takes a positive integer x and returns a logical value</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'  whether the integer is a palindromic number or not and return reversed #'  number to show that whether the reversed is same with the original </span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'  number.</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x a positive integer </span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param na.rm logical, should NA's be removed? Default is FALSE</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return list of a logical value and a numeric value</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>isPalindromic <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) { </span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"x must be a positive integer, attemting to convert"</span>)</span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">suppressWarnings</span>(x <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x))</span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x))) {</span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(</span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must have strictly positive length"</span>)</span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.logical</span>(na.rm)) {</span>
+<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
+<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"na.rm must be logical"</span>)</span>
+<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;=</span> <span class="dv">0</span> ) {</span>
+<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(</span>
+<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a>   <span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
+<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">!=</span> <span class="fu">round</span>(x)) {</span>
+<span id="cb57-35"><a href="#cb57-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(</span>
+<span id="cb57-36"><a href="#cb57-36" aria-hidden="true" tabindex="-1"></a>   <span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
+<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb57-39"><a href="#cb57-39" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">as.character</span>(x)</span>
+<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(y, <span class="st">""</span>)))</span>
+<span id="cb57-41"><a href="#cb57-41" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(z)</span>
+<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a>  check_palindromic <span class="ot">&lt;-</span> <span class="fu">logical</span>(k)</span>
+<span id="cb57-43"><a href="#cb57-43" aria-hidden="true" tabindex="-1"></a>  reverse <span class="ot">&lt;-</span> <span class="fu">numeric</span>(k)</span>
+<span id="cb57-44"><a href="#cb57-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb57-45"><a href="#cb57-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(z[i] <span class="sc">==</span> z[k<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>i]) {</span>
+<span id="cb57-46"><a href="#cb57-46" aria-hidden="true" tabindex="-1"></a>      check_palindromic[i] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb57-47"><a href="#cb57-47" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> { </span>
+<span id="cb57-48"><a href="#cb57-48" aria-hidden="true" tabindex="-1"></a>      check_palindromic[i] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb57-49"><a href="#cb57-49" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb57-50"><a href="#cb57-50" aria-hidden="true" tabindex="-1"></a>    reverse[i] <span class="ot">&lt;-</span> z[k<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>i]</span>
+<span id="cb57-51"><a href="#cb57-51" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-52"><a href="#cb57-52" aria-hidden="true" tabindex="-1"></a>  reverse_return <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">paste</span>(reverse, <span class="at">collapse =</span> <span class="st">""</span>))</span>
+<span id="cb57-53"><a href="#cb57-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">all</span>(check_palindromic <span class="sc">==</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb57-54"><a href="#cb57-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic =</span> <span class="cn">TRUE</span>, <span class="at">reversed =</span> reverse_return))</span>
+<span id="cb57-55"><a href="#cb57-55" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-56"><a href="#cb57-56" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> { </span>
+<span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">isPalindromic =</span> <span class="cn">FALSE</span>, <span class="at">reversed =</span> reverse_return))</span>
+<span id="cb57-58"><a href="#cb57-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a><span class="fu">isPalindromic</span>(<span class="dv">1100</span>) <span class="co"># check the "isPalindromic()" function </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$isPalindromic
 [1] FALSE
@@ -518,66 +534,63 @@ $reversed
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' Find the next palindromic number strictly greater than the input</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function takes a positive integer x and check from x+1 to the next paliindromic number whether the integer is a palindromic number or not and return the next palindromic number. </span></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x a positive integer</span></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param na.rm logical, should NA's be removed? Default is FALSE</span></span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' This function takes a positive integer x and check from x+1 to the next #' paliindromic number whether the integer is a palindromic number or not </span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' and return the next palindromic number. </span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x a positive integer</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param na.rm logical, should NA's be removed? Default is FALSE</span></span>
 <span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return a numeric value</span></span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
-<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
-<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' x &lt;- 1523</span></span>
-<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' nextPalindrome(x)</span></span>
-<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a><span class="co">#' [1] "1551"</span></span>
-<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>nextPalindrome <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
-<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"x must be a positive integer, attemting to convert"</span>)</span>
-<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">suppressWarnings</span>(x <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x))</span>
-<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x))) {</span>
-<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
-<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb59-27"><a href="#cb59-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
-<span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must have strictly positive length"</span>)</span>
-<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.logical</span>(na.rm)) {</span>
-<span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
-<span id="cb59-32"><a href="#cb59-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"na.rm must be logical"</span>)</span>
-<span id="cb59-33"><a href="#cb59-33" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb59-34"><a href="#cb59-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;=</span> <span class="dv">0</span> ) {</span>
-<span id="cb59-35"><a href="#cb59-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>nextPalindrome <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"x must be a positive integer, attemting to convert"</span>)</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">suppressWarnings</span>(x <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x))</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x))) {</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>     <span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
+<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must have strictly positive length"</span>)</span>
+<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.logical</span>(na.rm)) {</span>
+<span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this code is from STATS 506 class note</span></span>
+<span id="cb59-27"><a href="#cb59-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"na.rm must be logical"</span>)</span>
+<span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;=</span> <span class="dv">0</span> ) {</span>
+<span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(</span>
+<span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a>     <span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
+<span id="cb59-32"><a href="#cb59-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-33"><a href="#cb59-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">!=</span> <span class="fu">round</span>(x)) {</span>
+<span id="cb59-34"><a href="#cb59-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(</span>
+<span id="cb59-35"><a href="#cb59-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
 <span id="cb59-36"><a href="#cb59-36" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb59-37"><a href="#cb59-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">!=</span> <span class="fu">round</span>(x)) {</span>
-<span id="cb59-38"><a href="#cb59-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x must be a positive integer or convertible to a positive integer"</span>)</span>
-<span id="cb59-39"><a href="#cb59-39" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb59-40"><a href="#cb59-40" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb59-41"><a href="#cb59-41" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">as.character</span>(x<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb59-42"><a href="#cb59-42" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(y, <span class="st">""</span>)))</span>
-<span id="cb59-43"><a href="#cb59-43" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(z)</span>
-<span id="cb59-44"><a href="#cb59-44" aria-hidden="true" tabindex="-1"></a>  check <span class="ot">&lt;-</span> <span class="fu">logical</span>(k)</span>
-<span id="cb59-45"><a href="#cb59-45" aria-hidden="true" tabindex="-1"></a>  next_palindrome <span class="ot">&lt;-</span> <span class="fu">numeric</span>(k)</span>
-<span id="cb59-46"><a href="#cb59-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(<span class="sc">!</span><span class="fu">all</span>(check <span class="sc">==</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb59-47"><a href="#cb59-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
-<span id="cb59-48"><a href="#cb59-48" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(z[i] <span class="sc">==</span> z[k<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>i]) {</span>
-<span id="cb59-49"><a href="#cb59-49" aria-hidden="true" tabindex="-1"></a>        check[i] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb59-50"><a href="#cb59-50" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> { </span>
-<span id="cb59-51"><a href="#cb59-51" aria-hidden="true" tabindex="-1"></a>        check[i] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb59-52"><a href="#cb59-52" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb59-53"><a href="#cb59-53" aria-hidden="true" tabindex="-1"></a>      next_palindrome[i] <span class="ot">&lt;-</span> z[i]</span>
-<span id="cb59-54"><a href="#cb59-54" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb59-55"><a href="#cb59-55" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">as.numeric</span>(y)<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb59-56"><a href="#cb59-56" aria-hidden="true" tabindex="-1"></a>    z <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(y, <span class="st">""</span>)))</span>
-<span id="cb59-57"><a href="#cb59-57" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> <span class="fu">length</span>(z)</span>
-<span id="cb59-58"><a href="#cb59-58" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb59-59"><a href="#cb59-59" aria-hidden="true" tabindex="-1"></a>  next_palindrome <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">paste</span>(next_palindrome, <span class="at">collapse =</span> <span class="st">""</span>))</span>
-<span id="cb59-60"><a href="#cb59-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="at">nextPalindrome =</span> next_palindrome)</span>
-<span id="cb59-61"><a href="#cb59-61" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb59-62"><a href="#cb59-62" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb59-63"><a href="#cb59-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-64"><a href="#cb59-64" aria-hidden="true" tabindex="-1"></a><span class="fu">nextPalindrome</span>(<span class="dv">1523</span>) <span class="co"># check the "nextPalindrome()" function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-37"><a href="#cb59-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb59-38"><a href="#cb59-38" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">as.character</span>(x<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb59-39"><a href="#cb59-39" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(y, <span class="st">""</span>)))</span>
+<span id="cb59-40"><a href="#cb59-40" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(z)</span>
+<span id="cb59-41"><a href="#cb59-41" aria-hidden="true" tabindex="-1"></a>  check <span class="ot">&lt;-</span> <span class="fu">logical</span>(k)</span>
+<span id="cb59-42"><a href="#cb59-42" aria-hidden="true" tabindex="-1"></a>  next_palindrome <span class="ot">&lt;-</span> <span class="fu">numeric</span>(k)</span>
+<span id="cb59-43"><a href="#cb59-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(<span class="sc">!</span><span class="fu">all</span>(check <span class="sc">==</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb59-44"><a href="#cb59-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb59-45"><a href="#cb59-45" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(z[i] <span class="sc">==</span> z[k<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>i]) {</span>
+<span id="cb59-46"><a href="#cb59-46" aria-hidden="true" tabindex="-1"></a>        check[i] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb59-47"><a href="#cb59-47" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> { </span>
+<span id="cb59-48"><a href="#cb59-48" aria-hidden="true" tabindex="-1"></a>        check[i] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb59-49"><a href="#cb59-49" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb59-50"><a href="#cb59-50" aria-hidden="true" tabindex="-1"></a>      next_palindrome[i] <span class="ot">&lt;-</span> z[i]</span>
+<span id="cb59-51"><a href="#cb59-51" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb59-52"><a href="#cb59-52" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">as.numeric</span>(y)<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb59-53"><a href="#cb59-53" aria-hidden="true" tabindex="-1"></a>    z <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(y, <span class="st">""</span>)))</span>
+<span id="cb59-54"><a href="#cb59-54" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> <span class="fu">length</span>(z)</span>
+<span id="cb59-55"><a href="#cb59-55" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-56"><a href="#cb59-56" aria-hidden="true" tabindex="-1"></a>  next_palindrome <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">paste</span>(next_palindrome, <span class="at">collapse =</span> <span class="st">""</span>))</span>
+<span id="cb59-57"><a href="#cb59-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="at">nextPalindrome =</span> next_palindrome)</span>
+<span id="cb59-58"><a href="#cb59-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb59-59"><a href="#cb59-59" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-60"><a href="#cb59-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-61"><a href="#cb59-61" aria-hidden="true" tabindex="-1"></a><span class="fu">nextPalindrome</span>(<span class="dv">1523</span>) <span class="co"># check the "nextPalindrome()" function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1551</code></pre>
 </div>

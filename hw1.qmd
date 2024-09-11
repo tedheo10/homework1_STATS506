@@ -1,28 +1,35 @@
 ---
-title: "Homework #1"
+title: "Problem Set 1"
 author: "Taeyoung Heo(UMID # 2914 5801)"
 format: 
  html:
   toc: false
 ---
 
+GitHub repository link : <a href="https://github.com/tedheo10/homework1_STATS506">https://github.com/tedheo10/homework1_STATS506</a>
+<br>
+<br>
 ## Problem1 - Wine data
 
 <b>P1-a.</b> import "wine.data" into a data.frame in R
 
 ```{r}
 winedata <- read.table("wine.data", sep = ",")
-colnames(winedata) <- c("class", "alcohol", "acid", "ash", "alcalinity", "magnesium", "phenols", "flavanoids", "nonflavanoid_phenols", "proanthocyanins", "color_intensity", "hue", "protein", "proline")        
+colnames(winedata) <- c("class", "alcohol", "acid", "ash", "alcalinity",
+"magnesium", "phenols", "flavanoids", "nonflavanoid_phenols", 
+"proanthocyanins", "color_intensity", "hue", "protein", "proline")        
 ```
 <br>
 <b>P1-b.</b> check the number of wines within each class <br> [class1 = 59, class2 = 71, class3 = 48]
 
 ```{r}
 wineclass <- winedata$class
-count <- c(length(which(wineclass==1)), length(which(wineclass == 2)), length(which(wineclass == 3)))
+count <- c(length(which(wineclass==1)), length(which(wineclass == 2)), 
+           length(which(wineclass == 3)))
 report <- c(59, 71, 48)
 
-if(count[1] == report[1] & count[2] == report[2] & count[3] == report[3]) { 
+if(count[1] == report[1] & count[2] == report[2] & count[3] == report[3]) 
+  { 
   print("correct as reported in wine.names")
   } else { 
   print("wrong as reported in wine.names")
@@ -52,7 +59,8 @@ color1 <- winedata$color[winedata$class == 1]
 color2 <- winedata$color[winedata$class == 2]
 color3 <- winedata$color[winedata$class == 3]
 
-gcor <- c(cor(alcohol1, color1), cor(alcohol2, color2), cor(alcohol3, color3))
+gcor <- c(cor(alcohol1, color1), cor(alcohol2, color2), 
+          cor(alcohol3, color3))
 gcor 
 ```
 <br>
@@ -110,7 +118,7 @@ average_table
 We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. <br>
 <br>
 t-test p-value between class1 and class2 : <b>1.889e-11</b> <br>
-t-test p-value between class1 and class3 : <b>2.2e-16</b> <br>
+t-test p-value between class1 and class3 : <b>< 2.2e-16</b> <br>
 t-test p-value between class2 and class3 : <b>1.622e-10</b>
 
 ```{r}
@@ -123,7 +131,7 @@ t.test(phenols1, phenols3)
 t.test(phenols2, phenols3)
 ```
 
-## Problem2 - AskAManager.org Data 
+## Problem2 - AskAManager.org Data
 <b>P2-a.</b> import AskAManager.csv into a data.frame
 
 ```{r}
@@ -132,7 +140,11 @@ salary <- read.csv("AskAManager.csv")
 <br>
 <b>P2-b.</b> simplify the variable names
 ```{r}
-colnames(salary) <- c("number", "time", "age", "industry", "title", "title_context", "salary", "bonus", "currency", "currency_other", "income_context", "country", "state", "city", "experience", "experience_field", "education", "gender", "race")
+colnames(salary) <- c("number", "time", "age", "industry", "title", 
+                      "title_context", "salary", "bonus", "currency", 
+                      "currency_other", "income_context", "country", 
+                      "state", "city", "experience", "experience_field", 
+                      "education", "gender", "race")
 ```
 <br>
 <b>P2-c.</b> restrict the data to those paid in USD <br>
@@ -157,9 +169,13 @@ age[!duplicated(age)]
 field[!duplicated(field)]
 total[!duplicated(total)]
 
-age_kind <- c("25-34" = 16, "45-54" = 36, "35-44" = 26, "18-24" = 6, "65 or over" = 56, "55-64" = 46, "under 18" = 0)
+age_kind <- c("25-34" = 16, "45-54" = 36, "35-44" = 26, "18-24" = 6, 
+            "65 or over" = 56, "55-64" = 46, "under 18" = 0)
 
-experience_kind <- c("5-7 years" = 5, "2 - 4 years" = 2, "8 - 10 years" = 8, "21 - 30 years" = 21, "11 - 20 years" = 11, "41 years or more" = 41, "31 - 40 years" = 31, "1 year or less" = 1 )
+experience_kind <- c("5-7 years" = 5, "2 - 4 years" = 2, 
+                     "8 - 10 years" = 8, "21 - 30 years" = 21, 
+                     "11 - 20 years" = 11, "41 years or more" = 41,
+                     "31 - 40 years" = 31, "1 year or less" = 1 )
 
 age_trans <- age_kind[age]
 field_trans <- experience_kind[field]
@@ -190,20 +206,23 @@ for(i in 1:n_usd) {
   }
 }
 
+#test whether age is under 18 
 salary_year <- salary_res[memo, ]
-
-salary_year$age[!duplicated(salary_year$age)] #test whether age is under 18 
+salary_year$age[!duplicated(salary_year$age)] 
 
 #test example for whether their is reasonable with total experience 
-experience_test <- salary_year$age[salary_year$experience == "41 years or more"]
+experience_test <- salary_year$age[salary_year$experience
+                                   == "41 years or more"]
 experience_test[!duplicated(experience_test)] 
 
 #test example for whether their is reasonable with field experience 
-fieldexp_test <- salary_year$age[salary_year$experience_field == "41 years or more"]
+fieldexp_test <- salary_year$age[salary_year$experience_field 
+                                 == "41 years or more"]
 fieldexp_test[!duplicated(fieldexp_test)] 
 
 #test example for whether filed experience is less than total experience
-exp_fieldexp_test <- salary_year$experience_field[salary_year$experience == "8 - 10 years"]
+exp_fieldexp_test <- salary_year$experience_field[salary_year$experience
+                                                  == "8 - 10 years"]
 exp_fieldexp_test[!duplicated(exp_fieldexp_test)] 
 
 nrow(salary_year)
@@ -217,7 +236,7 @@ The extreme high salary : <b>1459608 USD</b> (mean + 2*standard deviation) <br>
 -> There are values on the right side of the distribution that differ from the mean by more than twice the standard deviation. <br>
 <br>
 The extreme low salary : <b>1,000 USD</b> <br>
--> There's a very heavy tail on the left side of the distribution.<br>
+-> There's a very thick tail on the left side of the distribution.<br>
 <br>
 The sample size : <b>23044</b>
 
@@ -235,9 +254,16 @@ sd_monetary <- sd(monetary_reward)
 mean_monetary + 2*sd_monetary
 mean_monetary - sd_monetary
 
-hist(monetary_reward[monetary_reward <= 1459608 & monetary_reward >= 1000], breaks = 100, main = "Monetary reward between 1,000 and 1,459,608 USD", xlab = "monetary reward", ylab = "number of people") 
-hist(monetary_reward[monetary_reward > 1459608], breaks = 100, main = "Monetary reward over 1,459,608 USD", xlab = "monetary reward", ylab = "number of people") 
-hist(monetary_reward[monetary_reward < 1000 & monetary_reward > 0], breaks = 100, main = "Monetary reward less than 1,000 USD", xlab = "monetary reward", ylab = "number of people")
+hist(monetary_reward[monetary_reward <= 1459608 & monetary_reward 
+                     >= 1000], breaks = 100, main = 
+       "Monetary reward between 1,000 and 1,459,608 USD", 
+     xlab = "monetary reward", ylab = "number of people") 
+hist(monetary_reward[monetary_reward > 1459608], breaks = 100, main =
+       "Monetary reward over 1,459,608 USD", 
+     xlab = "monetary reward", ylab = "number of people") 
+hist(monetary_reward[monetary_reward < 1000 & monetary_reward > 0], 
+     breaks = 100, main = "Monetary reward less than 1,000 USD", 
+     xlab = "monetary reward", ylab = "number of people")
 
 salary_year$monetary_reward <- monetary_reward
 salary_monetary <- salary_year[monetary_reward <= 1459608 & monetary_reward >= 1000, ]
@@ -253,28 +279,21 @@ nrow(salary_monetary)
 #'
 #' Determine whether a positive intger is palindromic or not 
 #'
-#' This function takes a positive integer x and returns a logical value whether the integer is a palindromic number or not and return reversed number to show that whether the reversed is same with the original number.
+#' This function takes a positive integer x and returns a logical value
+#'  whether the integer is a palindromic number or not and return reversed #'  number to show that whether the reversed is same with the original 
+#'  number.
 #'
 #' @param x a positive integer 
 #' @param na.rm logical, should NA's be removed? Default is FALSE
-#'
 #' @return list of a logical value and a numeric value
-#' @export
-#'
-#' @examples
-#' x <- 343
-#' isPalindromic(x)
-#' $isPalindromic
-#' [1] TRUE
-#' $reversed
-#' [1] "343"
 isPalindromic <- function(x, na.rm = FALSE) {
   if(!is.numeric(x)) { 
     # this code is from STATS 506 class note
     warning("x must be a positive integer, attemting to convert")
     suppressWarnings(x <- as.numeric(x))
     if(all(is.na(x))) {
-      stop("x must be a positive integer or convertible to a positive integer")
+      stop(
+    "x must be a positive integer or convertible to a positive integer")
     }
   }
   if(length(x) == 0) {
@@ -286,10 +305,12 @@ isPalindromic <- function(x, na.rm = FALSE) {
     warning("na.rm must be logical")
   }
   if(x <= 0 ) {
-    stop("x must be a positive integer or convertible to a positive integer")
+    stop(
+   "x must be a positive integer or convertible to a positive integer")
   }
   if(x != round(x)) {
-    stop("x must be a positive integer or convertible to a positive integer")
+    stop(
+   "x must be a positive integer or convertible to a positive integer")
   }
   
   y <- as.character(x)
@@ -324,25 +345,20 @@ isPalindromic(1100) # check the "isPalindromic()" function
 #'
 #' Find the next palindromic number strictly greater than the input
 #' 
-#' This function takes a positive integer x and check from x+1 to the next paliindromic number whether the integer is a palindromic number or not and return the next palindromic number. 
+#' This function takes a positive integer x and check from x+1 to the next #' paliindromic number whether the integer is a palindromic number or not 
+#' and return the next palindromic number. 
 #'
 #' @param x a positive integer
 #' @param na.rm logical, should NA's be removed? Default is FALSE
-#'
 #' @return a numeric value
-#' @export
-#'
-#' @examples
-#' x <- 1523
-#' nextPalindrome(x)
-#' [1] "1551"
 nextPalindrome <- function(x, na.rm = FALSE) {
   if(!is.numeric(x)) {
     # this code is from STATS 506 class note
     warning("x must be a positive integer, attemting to convert")
     suppressWarnings(x <- as.numeric(x))
     if(all(is.na(x))) {
-      stop("x must be a positive integer or convertible to a positive integer")
+      stop(
+     "x must be a positive integer or convertible to a positive integer")
     }
   }
   if(length(x) == 0) {
@@ -354,10 +370,12 @@ nextPalindrome <- function(x, na.rm = FALSE) {
     warning("na.rm must be logical")
   }
   if(x <= 0 ) {
-    stop("x must be a positive integer or convertible to a positive integer")
+    stop(
+     "x must be a positive integer or convertible to a positive integer")
   }
   if(x != round(x)) {
-    stop("x must be a positive integer or convertible to a positive integer")
+    stop(
+    "x must be a positive integer or convertible to a positive integer")
   }
   
   y <- as.character(x+1)

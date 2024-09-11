@@ -3,7 +3,9 @@
 
 winedata <- read.table("wine.data", sep = ",")
 colnames(winedata)
-colnames(winedata) <- c("class", "alcohol", "acid", "ash", "alcalinity", "magnesium", "phenols", "flavanoids", "nonflavanoid_phenols", "proanthocyanins", "color_intensity", "hue", "protein", "proline")            
+colnames(winedata) <- c("class", "alcohol", "acid", "ash", "alcalinity", 
+"magnesium", "phenols", "flavanoids", "nonflavanoid_phenols", "proanthocyanins", 
+"color_intensity", "hue", "protein", "proline")            
 
 # P1-b. check the number of wines within each class
 # class1 : 59, class2: 71, class3: 48
