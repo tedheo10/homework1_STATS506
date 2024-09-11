@@ -7,11 +7,13 @@ format:
 ---
 
 GitHub repository link : <a href="https://github.com/tedheo10/homework1_STATS506">https://github.com/tedheo10/homework1_STATS506</a>
-<br>
-<br>
-## Problem1 - Wine data
 
-<b>P1-a.</b> import "wine.data" into a data.frame in R
+```{r}
+```
+
+## Problem 1 - Wine data
+
+<b>P1-a.</b> import "wine.data" into a data.frame in R and give column names
 
 ```{r}
 winedata <- read.table("wine.data", sep = ",")
@@ -19,8 +21,8 @@ colnames(winedata) <- c("class", "alcohol", "acid", "ash", "alcalinity",
 "magnesium", "phenols", "flavanoids", "nonflavanoid_phenols", 
 "proanthocyanins", "color_intensity", "hue", "protein", "proline")        
 ```
-<br>
-<b>P1-b.</b> check the number of wines within each class <br> [class1 = 59, class2 = 71, class3 = 48]
+
+<br> <b>P1-b.</b> check the number of wines within each class <br> \[class1 = 59, class2 = 71, class3 = 48\]
 
 ```{r}
 wineclass <- winedata$class
@@ -35,18 +37,16 @@ if(count[1] == report[1] & count[2] == report[2] & count[3] == report[3])
   print("wrong as reported in wine.names")
   }
 ```
-<br>
-<b>P1-c-1.</b> the correlation between alcohol content and color intensity <br> the correlation : <b>0.5463642</b>
+
+<br> <b>P1-c-1.</b> the correlation between alcohol content and color intensity <br> the correlation : <b>0.5463642</b>
 
 ```{r}
 alcohol <- winedata$alcohol
 color <- winedata$color_intensity
 cor(alcohol, color)
 ```
-<br>
-<b>P1-c-2.</b> the highest and the lowest correlation <br>
-the highest : <b>class1(0.4082913)</b> <br>
-the lowest : <b>class2(0.2697891)</b> 
+
+<br> <b>P1-c-2.</b> the highest and the lowest correlation <br> the highest : <b>class1(0.4082913)</b> <br> the lowest : <b>class2(0.2697891)</b>
 
 ```{r}
 class <- winedata$class
@@ -63,27 +63,24 @@ gcor <- c(cor(alcohol1, color1), cor(alcohol2, color2),
           cor(alcohol3, color3))
 gcor 
 ```
-<br>
-<b>P1-c-3.</b> the alcohol content of the wine with the highest color intensity <br>
-the alcohol content with the hightest color intensity : <b>14.34</b>
+
+<br> <b>P1-c-3.</b> the alcohol content of the wine with the highest color intensity <br> the alcohol content with the hightest color intensity : <b>14.34</b>
 
 ```{r}
 length(which(color == max(color)))
 alcohol_hcolor <- winedata$alcohol[winedata$color_intensity == max(color)]
 alcohol_hcolor
 ```
-<br>
-<b>P1-c-4.</b> the percentage of the wines with a higher content of proanthocyanins compare to ash <br>
-the percentage : <b>8.426966%</b>
+
+<br> <b>P1-c-4.</b> the percentage of the wines with a higher content of proanthocyanins compare to ash <br> the percentage : <b>8.426966%</b>
 
 ```{r}
 proanthocyanins <- winedata$proanthocyanins
 proan_higher <- winedata$proanthocyanins[winedata$proanthocyanins > winedata$ash]
 length(proan_higher) / length(proanthocyanins) * 100
 ```
-<br>
-<b>P1-d.</b> table for the average value of each variable <br>
-the table : <b>average_table</b>
+
+<br> <b>P1-d.</b> table for the average value of each variable <br> the table : <b>average_table</b>
 
 ```{r}
 average_table <- matrix(0, nrow = 4, ncol = length(colnames(winedata))-1)
@@ -112,14 +109,8 @@ average_table["class3",] <- ave_class3
 
 average_table
 ```
-<br>
-<b>P1-e.</b> t-test to examine whether the level of phenols differs across the three classes <br>
-<br>
-We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. <br>
-<br>
-t-test p-value between class1 and class2 : <b>1.889e-11</b> <br>
-t-test p-value between class1 and class3 : <b>< 2.2e-16</b> <br>
-t-test p-value between class2 and class3 : <b>1.622e-10</b>
+
+<br> <b>P1-e.</b> t-test to examine whether the level of phenols differs across the three classes <br> <br> We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. <br> <br> t-test p-value between class1 and class2 : <b>1.889e<sup>-11</sup></b> <br> t-test p-value between class1 and class3 : <b>\< 2.2e<sup>-16</sup></b> <br> t-test p-value between class2 and class3 : <b>1.622e<sup>-10</sup></b>
 
 ```{r}
 phenols1 <- winedata$phenols[winedata$class == 1]
@@ -131,14 +122,16 @@ t.test(phenols1, phenols3)
 t.test(phenols2, phenols3)
 ```
 
-## Problem2 - AskAManager.org Data
+## Problem 2 - AskAManager.org Data
+
 <b>P2-a.</b> import AskAManager.csv into a data.frame
 
 ```{r}
 salary <- read.csv("AskAManager.csv")
 ```
-<br>
-<b>P2-b.</b> simplify the variable names
+
+<br> <b>P2-b.</b> simplify the variable names
+
 ```{r}
 colnames(salary) <- c("number", "time", "age", "industry", "title", 
                       "title_context", "salary", "bonus", "currency", 
@@ -146,10 +139,9 @@ colnames(salary) <- c("number", "time", "age", "industry", "title",
                       "state", "city", "experience", "experience_field", 
                       "education", "gender", "race")
 ```
-<br>
-<b>P2-c.</b> restrict the data to those paid in USD <br>
-the number of observations before : <b>28,062</b> <br>
-the number of oberservations after the restriction : <b>23,374</b> 
+
+<br> <b>P2-c.</b> restrict the data to those paid in USD <br> the number of observations before : <b>28,062</b> <br> the number of oberservations after the restriction : <b>23,374</b>
+
 ```{r}
 length(salary$currency)
 length(salary$currency[salary$currency == "USD"])
@@ -157,9 +149,9 @@ salary_res <- salary[salary$currency == "USD", ]
 
 nrow(salary_res) == length(salary$currency[salary$currency == "USD"])
 ```
-<br>
-<b>P2-d.</b> Eliminate any rows for which their age, years of experience in their field, and years of experience total are impossible <br>
-the number of observation after the elimination : <b>23,116</b>
+
+<br> <b>P2-d.</b> Eliminate any rows for which their age, years of experience in their field, and years of experience total are impossible <br> the number of observation after the elimination : <b>23,116</b>
+
 ```{r}
 age <- salary_res$age
 field <- salary_res$experience_field
@@ -227,18 +219,8 @@ exp_fieldexp_test[!duplicated(exp_fieldexp_test)]
 
 nrow(salary_year)
 ```
-<br>
-<b>P2-e.</b> eliminate any rows with extremely low or high salaries. <br>
-<br>
-The other monetary compensation is added to salalry in order to eliminate false slalrries.<br>
-<br>
-The extreme high salary : <b>1459608 USD</b> (mean + 2*standard deviation) <br>
--> There are values on the right side of the distribution that differ from the mean by more than twice the standard deviation. <br>
-<br>
-The extreme low salary : <b>1,000 USD</b> <br>
--> There's a very thick tail on the left side of the distribution.<br>
-<br>
-The sample size : <b>23044</b>
+
+<br> <b>P2-e.</b> eliminate any rows with extremely low or high salaries. <br> <br> The other monetary compensation is added to salalry in order to eliminate false slalrries.<br> <br> The extreme high salary : <b>1,459,608 USD</b> (mean + 2\*standard deviation) <br> -\> There are values on the right side of the distribution that differ from the mean by more than twice the standard deviation. <br> <br> The extreme low salary : <b>1,000 USD</b> <br> -\> There's a very thick tail on the left side of the distribution.<br> <br> The sample size : <b>23,044</b>
 
 ```{r}
 income <- salary_year$salary
@@ -272,7 +254,7 @@ nrow(salary_monetary)
 
 ## Problem 3 - Palindromic Numbers
 
-<b>P3-a.</b> function "isPalindromic" that check if a given positive integer is a palindromic 
+<b>P3-a.</b> function "isPalindromic" that check if a given positive integer is a palindromic
 
 ```{r}
 #' Palindromic of Integers 
@@ -337,8 +319,8 @@ isPalindromic <- function(x, na.rm = FALSE) {
 
 isPalindromic(1100) # check the "isPalindromic()" function 
 ```
-<br>
-<b>P3-b.</b> create a nextPalindrome function that finds the next palindromic number strictly greater than the input
+
+<br> <b>P3-b.</b> create a nextPalindrome function that finds the next palindromic number strictly greater than the input
 
 ```{r}
 #' Next Palindrome
@@ -403,14 +385,8 @@ nextPalindrome <- function(x, na.rm = FALSE) {
 
 nextPalindrome(1523) # check the "nextPalindrome()" function
 ```
-<br>
-<b>P3-c.</b> Use above functions to find the next palindrome for each of the following: (391, 9928, 19272719, 109, 2) <br>
-<br>
-i. 391 : <b>393</b> <br>
-ii. 9928 : <b>9999</b> <br>
-iii. 19272719 : <b>19277291</b> <br>
-iv. 109 : <b>111</b> <br>
-v. 2 : <b>3</b> 
+
+<br> <b>P3-c.</b> Use above functions to find the next palindrome for each of the following: (391, 9928, 19272719, 109, 2) <br> <br> i. 391 : <b>393</b> <br> ii. 9928 : <b>9999</b> <br> iii. 19272719 : <b>19277291</b> <br> iv. 109 : <b>111</b> <br> v. 2 : <b>3</b>
 
 ```{r}
 nextPalindrome(391)

@@ -103,8 +103,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>GitHub repository link : <a href="https://github.com/tedheo10/homework1_STATS506">https://github.com/tedheo10/homework1_STATS506</a> <br> <br> ## Problem1 - Wine data</p>
-<p><b>P1-a.</b> import “wine.data” into a data.frame in R</p>
+<p>GitHub repository link : <a href="https://github.com/tedheo10/homework1_STATS506">https://github.com/tedheo10/homework1_STATS506</a></p>
+<section id="problem-1---wine-data" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1---wine-data">Problem 1 - Wine data</h2>
+<p><b>P1-a.</b> import “wine.data” into a data.frame in R and give column names</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>winedata <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"wine.data"</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(winedata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"class"</span>, <span class="st">"alcohol"</span>, <span class="st">"acid"</span>, <span class="st">"ash"</span>, <span class="st">"alcalinity"</span>,</span>
@@ -222,7 +224,7 @@ class2   519.5070
 class3   629.8958</code></pre>
 </div>
 </div>
-<p><br> <b>P1-e.</b> t-test to examine whether the level of phenols differs across the three classes <br> <br> We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. <br> <br> t-test p-value between class1 and class2 : <b>1.889e-11</b> <br> t-test p-value between class1 and class3 : <b>&lt; 2.2e-16</b> <br> t-test p-value between class2 and class3 : <b>1.622e-10</b></p>
+<p><br> <b>P1-e.</b> t-test to examine whether the level of phenols differs across the three classes <br> <br> We can reject the hypothesis that the level of phenols is the same across the three classes because all three p-values are less than 0.01. So we can conclude that the level of phenols differs across the three classes. <br> <br> t-test p-value between class1 and class2 : <b>1.889e<sup>-11</sup></b> <br> t-test p-value between class1 and class3 : <b>&lt; 2.2e<sup>-16</sup></b> <br> t-test p-value between class2 and class3 : <b>1.622e<sup>-10</sup></b></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>phenols1 <span class="ot">&lt;-</span> winedata<span class="sc">$</span>phenols[winedata<span class="sc">$</span>class <span class="sc">==</span> <span class="dv">1</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>phenols2 <span class="ot">&lt;-</span> winedata<span class="sc">$</span>phenols[winedata<span class="sc">$</span>class <span class="sc">==</span> <span class="dv">2</span>]</span>
@@ -271,8 +273,9 @@ mean of x mean of y
  2.258873  1.678750 </code></pre>
 </div>
 </div>
-<section id="problem2---askamanager.org-data" class="level2">
-<h2 class="anchored" data-anchor-id="problem2---askamanager.org-data">Problem2 - AskAManager.org Data</h2>
+</section>
+<section id="problem-2---askamanager.org-data" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2---askamanager.org-data">Problem 2 - AskAManager.org Data</h2>
 <p><b>P2-a.</b> import AskAManager.csv into a data.frame</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>salary <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"AskAManager.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -393,7 +396,7 @@ mean of x mean of y
 <pre><code>[1] 23116</code></pre>
 </div>
 </div>
-<p><br> <b>P2-e.</b> eliminate any rows with extremely low or high salaries. <br> <br> The other monetary compensation is added to salalry in order to eliminate false slalrries.<br> <br> The extreme high salary : <b>1459608 USD</b> (mean + 2*standard deviation) <br> -&gt; There are values on the right side of the distribution that differ from the mean by more than twice the standard deviation. <br> <br> The extreme low salary : <b>1,000 USD</b> <br> -&gt; There’s a very thick tail on the left side of the distribution.<br> <br> The sample size : <b>23044</b></p>
+<p><br> <b>P2-e.</b> eliminate any rows with extremely low or high salaries. <br> <br> The other monetary compensation is added to salalry in order to eliminate false slalrries.<br> <br> The extreme high salary : <b>1,459,608 USD</b> (mean + 2*standard deviation) <br> -&gt; There are values on the right side of the distribution that differ from the mean by more than twice the standard deviation. <br> <br> The extreme low salary : <b>1,000 USD</b> <br> -&gt; There’s a very thick tail on the left side of the distribution.<br> <br> The sample size : <b>23,044</b></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>salary</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>bonus <span class="ot">&lt;-</span> salary_year<span class="sc">$</span>bonus</span>
@@ -423,7 +426,7 @@ mean of x mean of y
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hw1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="hw1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -433,7 +436,7 @@ mean of x mean of y
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hw1_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="hw1_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -443,7 +446,7 @@ mean of x mean of y
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hw1_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="hw1_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
