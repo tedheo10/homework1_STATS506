@@ -3,7 +3,8 @@ title: "Problem Set 1"
 author: "Taeyoung Heo(UMID # 2914 5801)"
 format: 
  html:
-  toc: false
+   embed-resources: true
+   toc: FALSE
 ---
 
 GitHub repository link : <a href="https://github.com/tedheo10/homework1_STATS506">https://github.com/tedheo10/homework1_STATS506</a>
